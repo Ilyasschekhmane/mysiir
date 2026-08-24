@@ -1,36 +1,1401 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<title>Contact – mysiir</title>
-<meta name="description" content="Contactez l'équipe de mysiir pour toute question ou support.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+
+  <meta charset="UTF-8">
+
+  <title>Contact — MY SIIR</title>
+
+  <meta
+    name="description"
+    content="Contactez MY SIIR pour toute question, suggestion, partenariat ou demande de support."
+  >
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    :root {
+      --bg: #020914;
+      --bg2: #061426;
+
+      --green: #00e5a0;
+      --purple: #7c3cff;
+      --purple-light: #a78bfa;
+
+      --white: #ffffff;
+      --text: #e8eef7;
+      --muted: #8fa0b5;
+
+      --border: rgba(255,255,255,0.10);
+    }
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+
+      font-family: "Inter", sans-serif;
+
+      color: var(--white);
+
+      background:
+
+        radial-gradient(
+          circle at 85% 10%,
+          rgba(124,60,255,0.17),
+          transparent 30%
+        ),
+
+        radial-gradient(
+          circle at 10% 45%,
+          rgba(0,229,160,0.09),
+          transparent 28%
+        ),
+
+        var(--bg);
+
+      line-height: 1.7;
+
+      overflow-x: hidden;
+    }
+
+
+    body::before {
+
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      background-image:
+
+        linear-gradient(
+          rgba(255,255,255,0.025) 1px,
+          transparent 1px
+        ),
+
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.025) 1px,
+          transparent 1px
+        );
+
+      background-size: 60px 60px;
+
+      pointer-events: none;
+
+      z-index: -1;
+    }
+
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    .container {
+
+      width: min(1180px, 92%);
+
+      margin: auto;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+
+      position: fixed;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+
+      z-index: 1000;
+
+      padding: 18px 0;
+
+      transition: .3s;
+    }
+
+
+    header.scrolled {
+
+      background:
+        rgba(2,9,20,.88);
+
+      backdrop-filter:
+        blur(20px);
+
+      border-bottom:
+        1px solid var(--border);
+
+      padding: 12px 0;
+    }
+
+
+    .nav {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+    }
+
+
+    .logo {
+
+      font-size: 25px;
+
+      font-weight: 800;
+
+      letter-spacing: -1px;
+    }
+
+
+    .logo span:first-child {
+      color: var(--green);
+    }
+
+
+    .logo span:last-child {
+      color: var(--purple-light);
+    }
+
+
+    nav {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 30px;
+    }
+
+
+    nav a {
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      font-weight: 600;
+
+      transition: .25s;
+    }
+
+
+    nav a:hover,
+    nav a.active {
+
+      color: var(--white);
+    }
+
+
+    .nav-button {
+
+      padding: 11px 20px;
+
+      border-radius: 12px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          #00bd8b
+        );
+
+      color: #001b13;
+
+      font-weight: 800;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+
+      padding: 170px 0 80px;
+
+      text-align: center;
+
+      position: relative;
+    }
+
+
+    .hero::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 400px;
+      height: 400px;
+
+      left: 50%;
+      top: 80px;
+
+      transform:
+        translateX(-50%);
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          var(--purple)
+        );
+
+      filter:
+        blur(170px);
+
+      opacity: .12;
+    }
+
+
+    .hero-content {
+
+      position: relative;
+
+      z-index: 1;
+    }
+
+
+    .eyebrow {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 8px 14px;
+
+      border-radius: 50px;
+
+      background:
+        rgba(0,229,160,.07);
+
+      border:
+        1px solid rgba(0,229,160,.20);
+
+      color: var(--green);
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      letter-spacing: 1px;
+
+      margin-bottom: 25px;
+    }
+
+
+    .eyebrow::before {
+
+      content: "";
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      box-shadow:
+        0 0 15px var(--green);
+    }
+
+
+    .hero h1 {
+
+      font-size:
+        clamp(45px,7vw,75px);
+
+      line-height: 1;
+
+      letter-spacing: -4px;
+
+      margin-bottom: 25px;
+    }
+
+
+    .gradient {
+
+      background:
+        linear-gradient(
+          100deg,
+          var(--green),
+          #52f2c0,
+          var(--purple-light)
+        );
+
+      -webkit-background-clip: text;
+
+      background-clip: text;
+
+      color: transparent;
+    }
+
+
+    .hero p {
+
+      max-width: 650px;
+
+      margin: auto;
+
+      color: var(--muted);
+
+      font-size: 18px;
+    }
+
+
+    /* =========================
+       CONTACT AREA
+    ========================= */
+
+    .contact-section {
+
+      padding: 50px 0 110px;
+    }
+
+
+    .contact-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        .8fr 1.2fr;
+
+      gap: 30px;
+
+      align-items: stretch;
+    }
+
+
+    /* =========================
+       INFO
+    ========================= */
+
+    .contact-info {
+
+      padding: 40px;
+
+      border-radius: 28px;
+
+      border:
+        1px solid var(--border);
+
+      background:
+
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(0,229,160,.12),
+          transparent 35%
+        ),
+
+        radial-gradient(
+          circle at 80% 80%,
+          rgba(124,60,255,.15),
+          transparent 35%
+        ),
+
+        #061426;
+    }
+
+
+    .contact-info h2 {
+
+      font-size: 30px;
+
+      margin-bottom: 15px;
+    }
+
+
+    .contact-info > p {
+
+      color: var(--muted);
+
+      margin-bottom: 35px;
+
+      font-size: 15px;
+    }
+
+
+    .info-item {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+
+      padding: 18px 0;
+
+      border-bottom:
+        1px solid var(--border);
+    }
+
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+
+    .info-icon {
+
+      width: 48px;
+      height: 48px;
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 14px;
+
+      background:
+        rgba(0,229,160,.08);
+
+      border:
+        1px solid rgba(0,229,160,.15);
+
+      font-size: 20px;
+    }
+
+
+    .info-text span {
+
+      display: block;
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      margin-bottom: 2px;
+    }
+
+
+    .info-text strong {
+
+      font-size: 14px;
+
+      word-break: break-word;
+    }
+
+
+    /* =========================
+       FORM
+    ========================= */
+
+    .contact-form {
+
+      padding: 40px;
+
+      border-radius: 28px;
+
+      border:
+        1px solid var(--border);
+
+      background:
+        rgba(7,24,43,.75);
+
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.20);
+    }
+
+
+    .contact-form h2 {
+
+      font-size: 30px;
+
+      margin-bottom: 8px;
+    }
+
+
+    .form-subtitle {
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      margin-bottom: 30px;
+    }
+
+
+    .form-row {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 18px;
+    }
+
+
+    .field {
+
+      margin-bottom: 20px;
+    }
+
+
+    label {
+
+      display: block;
+
+      font-size: 13px;
+
+      font-weight: 600;
+
+      margin-bottom: 8px;
+
+      color: var(--text);
+    }
+
+
+    input,
+    textarea,
+    select {
+
+      width: 100%;
+
+      border: 1px solid var(--border);
+
+      background:
+        rgba(255,255,255,.035);
+
+      color: white;
+
+      padding: 15px 16px;
+
+      border-radius: 14px;
+
+      outline: none;
+
+      font-family: inherit;
+
+      font-size: 14px;
+
+      transition: .25s;
+    }
+
+
+    input::placeholder,
+    textarea::placeholder {
+
+      color:
+        rgba(143,160,181,.65);
+    }
+
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+
+      border-color:
+        rgba(0,229,160,.55);
+
+      background:
+        rgba(0,229,160,.035);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(0,229,160,.06);
+    }
+
+
+    textarea {
+
+      min-height: 170px;
+
+      resize: vertical;
+    }
+
+
+    select option {
+
+      background: #061426;
+
+      color: white;
+    }
+
+
+    .submit {
+
+      width: 100%;
+
+      border: none;
+
+      cursor: pointer;
+
+      padding: 16px;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          #00bd8b
+        );
+
+      color: #001b13;
+
+      font-family: inherit;
+
+      font-weight: 800;
+
+      font-size: 14px;
+
+      transition: .3s;
+
+      box-shadow:
+        0 15px 40px
+        rgba(0,229,160,.15);
+    }
+
+
+    .submit:hover {
+
+      transform:
+        translateY(-3px);
+
+      box-shadow:
+        0 20px 50px
+        rgba(0,229,160,.25);
+    }
+
+
+    .privacy {
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+      text-align: center;
+
+      margin-top: 15px;
+    }
+
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+
+      margin-top: 30px;
+
+      padding: 80px 30px;
+
+      text-align: center;
+
+      border-radius: 35px;
+
+      border:
+        1px solid var(--border);
+
+      background:
+
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(0,229,160,.18),
+          transparent 35%
+        ),
+
+        radial-gradient(
+          circle at 80% 80%,
+          rgba(124,60,255,.22),
+          transparent 35%
+        ),
+
+        #07182b;
+    }
+
+
+    .cta h2 {
+
+      font-size:
+        clamp(34px,5vw,55px);
+
+      line-height: 1.1;
+
+      letter-spacing: -2px;
+
+      margin-bottom: 15px;
+    }
+
+
+    .cta p {
+
+      color: var(--muted);
+
+      margin-bottom: 30px;
+    }
+
+
+    .btn {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 15px 25px;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          #00bd8b
+        );
+
+      color: #001b13;
+
+      font-size: 14px;
+
+      font-weight: 800;
+
+      transition: .3s;
+    }
+
+
+    .btn:hover {
+
+      transform:
+        translateY(-4px);
+
+      box-shadow:
+        0 20px 50px
+        rgba(0,229,160,.25);
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+
+      margin-top: 80px;
+
+      padding: 35px 0;
+
+      border-top:
+        1px solid var(--border);
+
+      color: var(--muted);
+
+      text-align: center;
+
+      font-size: 13px;
+    }
+
+
+    /* =========================
+       ANIMATION
+    ========================= */
+
+    .reveal {
+
+      opacity: 0;
+
+      transform:
+        translateY(30px);
+
+      transition:
+        .7s ease;
+    }
+
+
+    .reveal.show {
+
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width:900px) {
+
+      nav {
+        display: none;
+      }
+
+
+      .contact-grid {
+
+        grid-template-columns:
+          1fr;
+      }
+
+    }
+
+
+    @media(max-width:600px) {
+
+      .hero {
+
+        padding-top: 145px;
+      }
+
+
+      .hero h1 {
+
+        letter-spacing: -2px;
+      }
+
+
+      .contact-info,
+      .contact-form {
+
+        padding: 25px;
+      }
+
+
+      .form-row {
+
+        grid-template-columns:
+          1fr;
+
+        gap: 0;
+      }
+
+
+      .contact-section {
+
+        padding-top: 20px;
+      }
+
+    }
+
+  </style>
+
 </head>
+
+
 <body>
-<header>
-<div class="logo">mysiir</div>
-<nav>
-  <a href="index.html">Accueil</a>
-  <a href="about.html">À propos</a>
-  <a href="matches.html">Matchs</a>
-  <a href="app.html">Application</a>
-  <a href="contact.html">Contact</a>
-</nav>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header id="header">
+
+  <div class="container nav">
+
+    <a
+      href="index.html"
+      class="logo"
+    >
+      MY<span>SIIR</span>
+    </a>
+
+
+    <nav>
+
+      <a href="index.html">
+        Accueil
+      </a>
+
+      <a href="about.html">
+        À propos
+      </a>
+
+      <a href="matches.html">
+        Matchs
+      </a>
+
+      <a href="app.html">
+        Application
+      </a>
+
+      <a
+        href="contact.html"
+        class="active"
+      >
+        Contact
+      </a>
+
+      <a
+        href="app.html"
+        class="nav-button"
+      >
+        Découvrir
+      </a>
+
+    </nav>
+
+  </div>
+
 </header>
 
-<section class="contact">
-<h2>Contactez-nous</h2>
-<form action="mailto:anouarmounir51@gmail.com" method="post" enctype="text/plain">
-<input type="text" name="name" placeholder="Votre nom" required>
-<input type="email" name="email" placeholder="Votre email" required>
-<textarea name="message" placeholder="Votre message" required></textarea>
-<button type="submit">Envoyer</button>
-</form>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+  <div class="container hero-content reveal">
+
+    <div class="eyebrow">
+      CONTACT MY SIIR
+    </div>
+
+
+    <h1>
+
+      Parlons de
+      <span class="gradient">
+        sport.
+      </span>
+
+    </h1>
+
+
+    <p>
+
+      Une question, une suggestion, un partenariat
+      ou simplement envie de nous dire bonjour ?
+      Notre équipe est là pour vous écouter.
+
+    </p>
+
+  </div>
+
 </section>
 
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="contact-section">
+
+  <div class="container contact-grid">
+
+
+    <!-- INFORMATION -->
+
+    <div class="contact-info reveal">
+
+      <h2>
+        Restons connectés
+      </h2>
+
+
+      <p>
+
+        Nous sommes toujours heureux de recevoir
+        vos idées, vos retours et vos propositions.
+
+      </p>
+
+
+      <div class="info-item">
+
+        <div class="info-icon">
+          📧
+        </div>
+
+        <div class="info-text">
+
+          <span>
+            Email
+          </span>
+
+          <strong>
+            anouarmounir51@gmail.com
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="info-item">
+
+        <div class="info-icon">
+          ⚽
+        </div>
+
+        <div class="info-text">
+
+          <span>
+            Support
+          </span>
+
+          <strong>
+            Questions & assistance
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="info-item">
+
+        <div class="info-icon">
+          🤝
+        </div>
+
+        <div class="info-text">
+
+          <span>
+            Partenariats
+          </span>
+
+          <strong>
+            Collaborons ensemble
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="info-item">
+
+        <div class="info-icon">
+          🚀
+        </div>
+
+        <div class="info-text">
+
+          <span>
+            MY SIIR
+          </span>
+
+          <strong>
+            Play. Connect. Win.
+          </strong>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- FORM -->
+
+    <div class="contact-form reveal">
+
+      <h2>
+        Envoyez-nous un message
+      </h2>
+
+
+      <p class="form-subtitle">
+
+        Remplissez le formulaire et dites-nous
+        comment nous pouvons vous aider.
+
+      </p>
+
+
+      <form
+        action="mailto:anouarmounir51@gmail.com"
+        method="post"
+        enctype="text/plain"
+      >
+
+
+        <div class="form-row">
+
+
+          <div class="field">
+
+            <label for="name">
+              Nom
+            </label>
+
+            <input
+              id="name"
+              type="text"
+              name="name"
+              placeholder="Votre nom"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="email">
+              Email
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="vous@email.com"
+              required
+            >
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="field">
+
+          <label for="subject">
+            Sujet
+          </label>
+
+          <select
+            id="subject"
+            name="subject"
+          >
+
+            <option value="support">
+              Support
+            </option>
+
+            <option value="suggestion">
+              Suggestion
+            </option>
+
+            <option value="partnership">
+              Partenariat
+            </option>
+
+            <option value="business">
+              Business
+            </option>
+
+            <option value="other">
+              Autre
+            </option>
+
+          </select>
+
+        </div>
+
+
+
+        <div class="field">
+
+          <label for="message">
+            Message
+          </label>
+
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Écrivez votre message..."
+            required
+          ></textarea>
+
+        </div>
+
+
+
+        <button
+          type="submit"
+          class="submit"
+        >
+          Envoyer le message →
+        </button>
+
+
+        <p class="privacy">
+
+          Vos informations sont utilisées uniquement
+          pour répondre à votre demande.
+
+        </p>
+
+
+      </form>
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- CTA -->
+
+  <div class="container">
+
+    <div class="cta reveal">
+
+      <h2>
+
+        Une idée pour
+        <span class="gradient">
+          MY SIIR ?
+        </span>
+
+      </h2>
+
+
+      <p>
+
+        Chaque retour nous aide à construire
+        une meilleure expérience sportive.
+
+      </p>
+
+
+      <a
+        href="app.html"
+        class="btn"
+      >
+        Découvrir l'application →
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
-<p>© 2025 mysiir – Tous droits réservés</p>
+
+  <div class="container">
+
+    © 2026 MY SIIR —
+    Play. Connect. Win.
+
+  </div>
+
 </footer>
+
+
+
+<script>
+
+  /* Sticky header */
+
+  const header =
+    document.getElementById("header");
+
+
+  window.addEventListener(
+    "scroll",
+    () => {
+
+      if (window.scrollY > 40) {
+
+        header.classList.add("scrolled");
+
+      } else {
+
+        header.classList.remove("scrolled");
+
+      }
+
+    }
+  );
+
+
+  /* Scroll reveal */
+
+  const elements =
+    document.querySelectorAll(".reveal");
+
+
+  function reveal() {
+
+    const height =
+      window.innerHeight;
+
+
+    elements.forEach(
+      element => {
+
+        if (
+          element.getBoundingClientRect().top
+          <
+          height - 80
+        ) {
+
+          element.classList.add("show");
+
+        }
+
+      }
+    );
+
+  }
+
+
+  window.addEventListener(
+    "scroll",
+    reveal
+  );
+
+
+  window.addEventListener(
+    "load",
+    reveal
+  );
+
+</script>
+
+
 </body>
+
 </html>
