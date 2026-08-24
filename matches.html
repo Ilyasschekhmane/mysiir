@@ -1,95 +1,2227 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Matchs sportifs – mysiir</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Découvrez et rejoignez des matchs sportifs près de chez vous avec mysiir. Football, futsal et sports communautaires.">
-  <meta name="keywords" content="mysiir, matchs sportifs, football local, sport social">
-  <meta name="author" content="mysiir">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Matchs – mysiir">
-  <meta property="og:description" content="Trouvez des matchs sportifs près de vous.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mysiir.com/matches.html">
+<title>Matchs — MY SIIR | Trouvez votre prochain match</title>
 
-  <link rel="stylesheet" href="style.css">
+<meta
+name="description"
+content="Découvrez, recherchez et rejoignez des matchs sportifs près de chez vous avec MY SIIR."
+>
 
-  <style>
-    .container { max-width:1200px; margin:auto; padding:40px 20px; }
-    .filters { display:flex; gap:15px; flex-wrap:wrap; margin-bottom:40px; }
-    .filters select, .filters input {
-      padding:12px;
-      border-radius:10px;
-      border:none;
-      background:#111;
-      color:#fff;
-    }
-    .matches-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:25px;
-    }
-    .match-card {
-      background:#0f0f0f;
-      border-radius:20px;
-      padding:25px;
-      transition:.3s;
-      position:relative;
-    }
-    .match-card:hover {
-      transform:translateY(-6px);
-      box-shadow:0 20px 40px rgba(0,0,0,.4);
-    }
-    .badge {
-      position:absolute;
-      top:15px;
-      right:15px;
-      background:#00ff99;
-      color:#000;
-      padding:6px 12px;
-      border-radius:20px;
-      font-size:13px;
-      font-weight:bold;
-    }
-    .match-card h3 { margin-top:10px; }
-    .match-info { opacity:.85; margin:10px 0; }
-    .join-btn {
-      display:inline-block;
-      margin-top:15px;
-      padding:12px 18px;
-      border-radius:30px;
-      background:#00ff99;
-      color:#000;
-      font-weight:bold;
-    }
-    .stats {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:30px;
-      margin:80px 0;
-    }
-    .stat {
-      background:#111;
-      padding:30px;
-      border-radius:20px;
-      text-align:center;
-    }
-    .stat h2 { font-size:40px; color:#00ff99; }
-  </style>
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+rel="stylesheet"
+>
+
+<style>
+
+:root{
+
+--bg:#020914;
+--bg2:#061426;
+
+--green:#00e5a0;
+--green2:#00bd8b;
+
+--purple:#7c3cff;
+--purple2:#a78bfa;
+
+--white:#fff;
+--text:#e8eef7;
+--muted:#8fa0b5;
+
+--border:rgba(255,255,255,.09);
+
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:Inter,sans-serif;
+
+background:
+
+radial-gradient(
+circle at 80% 10%,
+rgba(124,60,255,.16),
+transparent 30%
+),
+
+radial-gradient(
+circle at 10% 30%,
+rgba(0,229,160,.08),
+transparent 25%
+),
+
+var(--bg);
+
+color:var(--white);
+
+line-height:1.6;
+
+overflow-x:hidden;
+
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+.container{
+
+width:min(1200px,92%);
+
+margin:auto;
+
+}
+
+
+/* =========================
+HEADER
+========================= */
+
+header{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+
+z-index:1000;
+
+padding:18px 0;
+
+transition:.3s;
+
+}
+
+header.scrolled{
+
+background:rgba(2,9,20,.88);
+
+backdrop-filter:blur(20px);
+
+border-bottom:1px solid var(--border);
+
+padding:12px 0;
+
+}
+
+.nav{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+}
+
+.logo{
+
+font-size:25px;
+
+font-weight:800;
+
+letter-spacing:-1px;
+
+}
+
+.logo span:first-child{
+color:var(--green);
+}
+
+.logo span:last-child{
+color:var(--purple2);
+}
+
+nav{
+
+display:flex;
+
+align-items:center;
+
+gap:28px;
+
+}
+
+nav a{
+
+font-size:14px;
+
+font-weight:600;
+
+color:var(--muted);
+
+transition:.25s;
+
+}
+
+nav a:hover,
+nav a.active{
+
+color:white;
+
+}
+
+.nav-btn{
+
+padding:11px 18px;
+
+border-radius:12px;
+
+background:linear-gradient(
+135deg,
+var(--green),
+var(--green2)
+);
+
+color:#001b13;
+
+font-weight:800;
+
+}
+
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+
+padding:155px 0 70px;
+
+position:relative;
+
+}
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+
+width:450px;
+height:450px;
+
+right:5%;
+top:80px;
+
+background:
+
+linear-gradient(
+135deg,
+var(--purple),
+var(--green)
+);
+
+filter:blur(170px);
+
+opacity:.12;
+
+pointer-events:none;
+
+}
+
+.hero-content{
+
+position:relative;
+
+z-index:2;
+
+}
+
+.eyebrow{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:8px;
+
+padding:8px 14px;
+
+border-radius:50px;
+
+background:rgba(0,229,160,.07);
+
+border:1px solid rgba(0,229,160,.2);
+
+color:var(--green);
+
+font-size:12px;
+
+font-weight:800;
+
+letter-spacing:1px;
+
+margin-bottom:22px;
+
+}
+
+.eyebrow::before{
+
+content:"";
+
+width:7px;
+height:7px;
+
+border-radius:50%;
+
+background:var(--green);
+
+box-shadow:0 0 15px var(--green);
+
+}
+
+.hero h1{
+
+font-size:clamp(45px,7vw,75px);
+
+line-height:1;
+
+letter-spacing:-4px;
+
+max-width:850px;
+
+margin-bottom:25px;
+
+}
+
+.gradient{
+
+background:
+
+linear-gradient(
+100deg,
+var(--green),
+#52f2c0,
+var(--purple2)
+);
+
+-webkit-background-clip:text;
+
+background-clip:text;
+
+color:transparent;
+
+}
+
+.hero p{
+
+max-width:650px;
+
+color:var(--muted);
+
+font-size:18px;
+
+}
+
+
+/* =========================
+CREATE MATCH
+========================= */
+
+.hero-actions{
+
+display:flex;
+
+gap:15px;
+
+margin-top:32px;
+
+flex-wrap:wrap;
+
+}
+
+.btn{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:15px 23px;
+
+border-radius:14px;
+
+font-size:14px;
+
+font-weight:800;
+
+transition:.3s;
+
+}
+
+.btn-primary{
+
+background:
+
+linear-gradient(
+135deg,
+var(--green),
+var(--green2)
+);
+
+color:#001b13;
+
+box-shadow:
+
+0 15px 40px
+rgba(0,229,160,.12);
+
+}
+
+.btn-primary:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+
+0 20px 50px
+rgba(0,229,160,.25);
+
+}
+
+.btn-secondary{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid var(--border);
+
+color:white;
+
+}
+
+.btn-secondary:hover{
+
+background:rgba(255,255,255,.08);
+
+transform:translateY(-3px);
+
+}
+
+
+/* =========================
+FILTERS
+========================= */
+
+.filters-box{
+
+margin-top:25px;
+
+padding:22px;
+
+border-radius:22px;
+
+background:
+
+rgba(7,24,43,.75);
+
+border:1px solid var(--border);
+
+backdrop-filter:blur(15px);
+
+}
+
+.filters{
+
+display:grid;
+
+grid-template-columns:
+1.4fr
+1fr
+1fr
+1fr;
+
+gap:12px;
+
+}
+
+.field{
+
+position:relative;
+
+}
+
+.field input,
+.field select{
+
+width:100%;
+
+padding:14px 15px;
+
+border-radius:12px;
+
+border:1px solid var(--border);
+
+background:#08182b;
+
+color:white;
+
+outline:none;
+
+font-family:inherit;
+
+}
+
+.field input::placeholder{
+
+color:#718299;
+
+}
+
+.field input:focus,
+.field select:focus{
+
+border-color:
+
+rgba(0,229,160,.5);
+
+}
+
+select option{
+
+background:#08182b;
+
+}
+
+
+/* =========================
+SECTION HEADER
+========================= */
+
+.section-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:end;
+
+margin:55px 0 25px;
+
+}
+
+.section-header h2{
+
+font-size:30px;
+
+letter-spacing:-1px;
+
+}
+
+.section-header p{
+
+color:var(--muted);
+
+font-size:14px;
+
+}
+
+
+/* =========================
+MATCH GRID
+========================= */
+
+.matches-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:20px;
+
+}
+
+
+/* =========================
+CARD
+========================= */
+
+.match-card{
+
+position:relative;
+
+overflow:hidden;
+
+padding:25px;
+
+border-radius:22px;
+
+background:
+
+linear-gradient(
+145deg,
+rgba(8,25,45,.95),
+rgba(4,14,27,.95)
+);
+
+border:1px solid var(--border);
+
+transition:.35s;
+
+}
+
+.match-card::before{
+
+content:"";
+
+position:absolute;
+
+width:160px;
+height:160px;
+
+right:-80px;
+top:-80px;
+
+background:var(--purple);
+
+filter:blur(70px);
+
+opacity:.10;
+
+}
+
+.match-card:hover{
+
+transform:translateY(-8px);
+
+border-color:
+
+rgba(0,229,160,.35);
+
+box-shadow:
+
+0 25px 60px
+rgba(0,0,0,.3);
+
+}
+
+.match-top{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:22px;
+
+}
+
+.sport{
+
+display:flex;
+
+align-items:center;
+
+gap:9px;
+
+font-size:13px;
+
+font-weight:700;
+
+}
+
+.sport-icon{
+
+width:38px;
+height:38px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border-radius:11px;
+
+background:
+
+rgba(0,229,160,.08);
+
+border:1px solid rgba(0,229,160,.12);
+
+font-size:18px;
+
+}
+
+.badge{
+
+padding:6px 10px;
+
+border-radius:50px;
+
+font-size:11px;
+
+font-weight:800;
+
+}
+
+.available{
+
+background:rgba(0,229,160,.10);
+
+color:var(--green);
+
+}
+
+.full{
+
+background:rgba(239,68,68,.10);
+
+color:#ff7373;
+
+}
+
+.match-card h3{
+
+font-size:21px;
+
+margin-bottom:8px;
+
+}
+
+.location{
+
+color:var(--muted);
+
+font-size:13px;
+
+margin-bottom:20px;
+
+}
+
+.details{
+
+display:grid;
+
+grid-template-columns:
+1fr 1fr;
+
+gap:10px;
+
+margin-bottom:20px;
+
+}
+
+.detail{
+
+padding:11px;
+
+border-radius:12px;
+
+background:rgba(255,255,255,.035);
+
+border:1px solid rgba(255,255,255,.05);
+
+}
+
+.detail span{
+
+display:block;
+
+font-size:10px;
+
+color:var(--muted);
+
+margin-bottom:2px;
+
+}
+
+.detail strong{
+
+font-size:12px;
+
+}
+
+.players{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+margin-bottom:18px;
+
+}
+
+.avatars{
+
+display:flex;
+
+}
+
+.avatar{
+
+width:30px;
+height:30px;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+margin-left:-7px;
+
+border:2px solid #071426;
+
+background:
+
+linear-gradient(
+135deg,
+var(--purple),
+var(--green)
+);
+
+font-size:11px;
+
+font-weight:700;
+
+}
+
+.avatar:first-child{
+margin-left:0;
+}
+
+.player-count{
+
+font-size:12px;
+
+color:var(--muted);
+
+}
+
+.join{
+
+width:100%;
+
+padding:13px;
+
+border-radius:12px;
+
+text-align:center;
+
+background:
+
+rgba(0,229,160,.08);
+
+border:1px solid rgba(0,229,160,.18);
+
+color:var(--green);
+
+font-size:13px;
+
+font-weight:800;
+
+transition:.25s;
+
+}
+
+.join:hover{
+
+background:var(--green);
+
+color:#001b13;
+
+}
+
+
+/* =========================
+STATS
+========================= */
+
+.stats{
+
+display:grid;
+
+grid-template-columns:
+repeat(4,1fr);
+
+gap:15px;
+
+margin:70px 0;
+
+}
+
+.stat{
+
+padding:25px;
+
+border-radius:20px;
+
+background:rgba(7,24,43,.75);
+
+border:1px solid var(--border);
+
+text-align:center;
+
+}
+
+.stat strong{
+
+display:block;
+
+font-size:32px;
+
+color:var(--green);
+
+margin-bottom:4px;
+
+}
+
+.stat span{
+
+font-size:12px;
+
+color:var(--muted);
+
+}
+
+
+/* =========================
+CTA
+========================= */
+
+.cta{
+
+margin:40px 0 90px;
+
+padding:70px 30px;
+
+border-radius:30px;
+
+text-align:center;
+
+border:1px solid var(--border);
+
+background:
+
+radial-gradient(
+circle at 20% 20%,
+rgba(0,229,160,.14),
+transparent 35%
+),
+
+radial-gradient(
+circle at 80% 80%,
+rgba(124,60,255,.18),
+transparent 35%
+),
+
+#07182b;
+
+}
+
+.cta h2{
+
+font-size:clamp(35px,5vw,52px);
+
+letter-spacing:-2px;
+
+margin-bottom:12px;
+
+}
+
+.cta p{
+
+color:var(--muted);
+
+margin-bottom:28px;
+
+}
+
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+
+border-top:1px solid var(--border);
+
+padding:35px 0;
+
+text-align:center;
+
+font-size:13px;
+
+color:var(--muted);
+
+}
+
+
+/* =========================
+ANIMATION
+========================= */
+
+.reveal{
+
+opacity:0;
+
+transform:translateY(25px);
+
+transition:.7s ease;
+
+}
+
+.reveal.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:950px){
+
+nav{
+display:none;
+}
+
+.filters{
+
+grid-template-columns:
+1fr 1fr;
+
+}
+
+.matches-grid{
+
+grid-template-columns:
+repeat(2,1fr);
+
+}
+
+.stats{
+
+grid-template-columns:
+repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:650px){
+
+.hero{
+
+padding-top:140px;
+
+}
+
+.hero h1{
+
+letter-spacing:-2px;
+
+}
+
+.filters{
+
+grid-template-columns:1fr;
+
+}
+
+.matches-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.stats{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+.section-header{
+
+display:block;
+
+}
+
+.section-header p{
+
+margin-top:7px;
+
+}
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-<header>
-  <div class="logo">mysiir</div>
-  <nav>
-    <a href="index.html">Accueil</a>
-    <a href="about.html">À propos</a>
-    <a href="matches.html">Matchs</a>
-    <a href="app.html">Application</a>
-    <a href="contact.html">Contact</a>
-  </
+
+<!-- HEADER -->
+
+<header id="header">
+
+<div class="container nav">
+
+<a href="index.html" class="logo">
+MY<span>SIIR</span>
+</a>
+
+<nav>
+
+<a href="index.html">
+Accueil
+</a>
+
+<a href="about.html">
+À propos
+</a>
+
+<a href="matches.html" class="active">
+Matchs
+</a>
+
+<a href="app.html">
+Application
+</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+<a href="app.html" class="nav-btn">
+Découvrir
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container hero-content reveal">
+
+<div class="eyebrow">
+MATCHS PRÈS DE VOUS
+</div>
+
+<h1>
+
+Trouvez votre
+<span class="gradient">
+prochain match.
+</span>
+
+</h1>
+
+<p>
+
+Découvrez des matchs autour de vous,
+rejoignez une équipe et rencontrez
+de nouveaux joueurs.
+
+</p>
+
+
+<div class="hero-actions">
+
+<a
+href="#matches"
+class="btn btn-primary"
+>
+⚽ Voir les matchs
+</a>
+
+<a
+href="contact.html"
+class="btn btn-secondary"
+>
+➕ Créer un match
+</a>
+
+</div>
+
+
+<!-- FILTERS -->
+
+<div class="filters-box">
+
+<div class="filters">
+
+<div class="field">
+
+<input
+type="search"
+id="search"
+placeholder="🔎 Rechercher un match..."
+>
+
+</div>
+
+
+<div class="field">
+
+<select id="sport">
+
+<option value="all">
+Tous les sports
+</option>
+
+<option value="football">
+⚽ Football
+</option>
+
+<option value="futsal">
+🥅 Futsal
+</option>
+
+<option value="basket">
+🏀 Basketball
+</option>
+
+<option value="tennis">
+🎾 Tennis
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<select id="level">
+
+<option value="all">
+Tous les niveaux
+</option>
+
+<option value="beginner">
+Débutant
+</option>
+
+<option value="intermediate">
+Intermédiaire
+</option>
+
+<option value="advanced">
+Avancé
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<select id="city">
+
+<option value="all">
+Toutes les villes
+</option>
+
+<option value="casablanca">
+Casablanca
+</option>
+
+<option value="rabat">
+Rabat
+</option>
+
+<option value="marrakech">
+Marrakech
+</option>
+
+<option value="tanger">
+Tanger
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- MATCHES -->
+
+<main
+id="matches"
+class="container"
+>
+
+<div class="section-header">
+
+<div>
+
+<h2>
+Matchs disponibles
+</h2>
+
+<p>
+Rejoignez votre communauté sportive.
+</p>
+
+</div>
+
+<p id="resultCount">
+6 matchs trouvés
+</p>
+
+</div>
+
+
+<div
+class="matches-grid"
+id="matchesGrid"
+>
+
+
+<!-- MATCH 1 -->
+
+<article
+class="match-card reveal"
+data-sport="football"
+data-level="intermediate"
+data-city="casablanca"
+>
+
+<div class="match-top">
+
+<div class="sport">
+
+<div class="sport-icon">
+⚽
+</div>
+
+Football
+
+</div>
+
+<div class="badge available">
+Disponible
+</div>
+
+</div>
+
+
+<h3>
+Match du soir
+</h3>
+
+<div class="location">
+📍 Casablanca — Ain Diab
+</div>
+
+
+<div class="details">
+
+<div class="detail">
+
+<span>
+DATE
+</span>
+
+<strong>
+Aujourd'hui
+</strong>
+
+</div>
+
+<div class="detail">
+
+<span>
+HEURE
+</span>
+
+<strong>
+20:30
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="players">
+
+<div class="avatars">
+
+<div class="avatar">
+A
+</div>
+
+<div class="avatar">
+M
+</div>
+
+<div class="avatar">
+Y
+</div>
+
+<div class="avatar">
++
+</div>
+
+</div>
+
+<div class="player-count">
+7 / 10 joueurs
+</div>
+
+</div>
+
+
+<a href="contact.html" class="join">
+Rejoindre le match →
+</a>
+
+</article>
+
+
+
+<!-- MATCH 2 -->
+
+<article
+class="match-card reveal"
+data-sport="futsal"
+data-level="beginner"
+data-city="rabat"
+>
+
+<div class="match-top">
+
+<div class="sport">
+
+<div class="sport-icon">
+🥅
+</div>
+
+Futsal
+
+</div>
+
+<div class="badge available">
+Disponible
+</div>
+
+</div>
+
+
+<h3>
+Futsal Weekend
+</h3>
+
+<div class="location">
+📍 Rabat — Agdal
+</div>
+
+
+<div class="details">
+
+<div class="detail">
+
+<span>
+DATE
+</span>
+
+<strong>
+Samedi
+</strong>
+
+</div>
+
+<div class="detail">
+
+<span>
+HEURE
+</span>
+
+<strong>
+18:00
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="players">
+
+<div class="avatars">
+
+<div class="avatar">
+K
+</div>
+
+<div class="avatar">
+S
+</div>
+
+<div class="avatar">
+N
+</div>
+
+</div>
+
+<div class="player-count">
+5 / 10 joueurs
+</div>
+
+</div>
+
+
+<a href="contact.html" class="join">
+Rejoindre le match →
+</a>
+
+</article>
+
+
+
+<!-- MATCH 3 -->
+
+<article
+class="match-card reveal"
+data-sport="football"
+data-level="advanced"
+data-city="marrakech"
+>
+
+<div class="match-top">
+
+<div class="sport">
+
+<div class="sport-icon">
+⚽
+</div>
+
+Football
+
+</div>
+
+<div class="badge available">
+Disponible
+</div>
+
+</div>
+
+
+<h3>
+Football Night
+</h3>
+
+<div class="location">
+📍 Marrakech — Guéliz
+</div>
+
+
+<div class="details">
+
+<div class="detail">
+
+<span>
+DATE
+</span>
+
+<strong>
+Vendredi
+</strong>
+
+</div>
+
+<div class="detail">
+
+<span>
+HEURE
+</span>
+
+<strong>
+21:00
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="players">
+
+<div class="avatars">
+
+<div class="avatar">
+I
+</div>
+
+<div class="avatar">
+O
+</div>
+
+<div class="avatar">
+R
+</div>
+
+<div class="avatar">
+T
+</div>
+
+</div>
+
+<div class="player-count">
+8 / 10 joueurs
+</div>
+
+</div>
+
+
+<a href="contact.html" class="join">
+Rejoindre le match →
+</a>
+
+</article>
+
+
+
+<!-- MATCH 4 -->
+
+<article
+class="match-card reveal"
+data-sport="basket"
+data-level="intermediate"
+data-city="casablanca"
+>
+
+<div class="match-top">
+
+<div class="sport">
+
+<div class="sport-icon">
+🏀
+</div>
+
+Basketball
+
+</div>
+
+<div class="badge available">
+Disponible
+</div>
+
+</div>
+
+
+<h3>
+Basket 3x3
+</h3>
+
+<div class="location">
+📍 Casablanca — Maarif
+</div>
+
+
+<div class="details">
+
+<div class="detail">
+
+<span>
+DATE
+</span>
+
+<strong>
+Dimanche
+</strong>
+
+</div>
+
+<div class="detail">
+
+<span>
+HEURE
+</span>
+
+<strong>
+17:00
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="players">
+
+<div class="avatars">
+
+<div class="avatar">
+Z
+</div>
+
+<div class="avatar">
+H
+</div>
+
+</div>
+
+<div class="player-count">
+4 / 6 joueurs
+</div>
+
+</div>
+
+
+<a href="contact.html" class="join">
+Rejoindre le match →
+</a>
+
+</article>
+
+
+
+<!-- MATCH 5 -->
+
+<article
+class="match-card reveal"
+data-sport="tennis"
+data-level="advanced"
+data-city="tanger"
+>
+
+<div class="match-top">
+
+<div class="sport">
+
+<div class="sport-icon">
+🎾
+</div>
+
+Tennis
+
+</div>
+
+<div class="badge available">
+Disponible
+</div>
+
+</div>
+
+
+<h3>
+Tennis Challenge
+</h3>
+
+<div class="location">
+📍 Tanger — Malabata
+</div>
+
+
+<div class="details">
+
+<div class="detail">
+
+<span>
+DATE
+</span>
+
+<strong>
+Samedi
+</strong>
+
+</div>
+
+<div class="detail">
+
+<span>
+HEURE
+</span>
+
+<strong>
+16:30
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="players">
+
+<div class="avatars">
+
+<div class="avatar">
+Y
+</div>
+
+<div class="avatar">
+B
+</div>
+
+</div>
+
+<div class="player-count">
+1 / 2 joueurs
+</div>
+
+</div>
+
+
+<a href="contact.html" class="join">
+Rejoindre le match →
+</a>
+
+</article>
+
+
+
+<!-- MATCH 6 -->
+
+<article
+class="match-card reveal"
+data-sport="football"
+data-level="beginner"
+data-city="rabat"
+>
+
+<div class="match-top">
+
+<div class="sport">
+
+<div class="sport-icon">
+⚽
+</div>
+
+Football
+
+</div>
+
+<div class="badge full">
+Complet
+</div>
+
+</div>
+
+
+<h3>
+Sunday Football
+</h3>
+
+<div class="location">
+📍 Rabat — Hay Riad
+</div>
+
+
+<div class="details">
+
+<div class="detail">
+
+<span>
+DATE
+</span>
+
+<strong>
+Dimanche
+</strong>
+
+</div>
+
+<div class="detail">
+
+<span>
+HEURE
+</span>
+
+<strong>
+19:00
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="players">
+
+<div class="avatars">
+
+<div class="avatar">
+M
+</div>
+
+<div class="avatar">
+A
+</div>
+
+<div class="avatar">
+R
+</div>
+
+<div class="avatar">
+Y
+</div>
+
+</div>
+
+<div class="player-count">
+10 / 10 joueurs
+</div>
+
+</div>
+
+
+<a
+href="#"
+class="join"
+style="opacity:.5;pointer-events:none;"
+>
+Match complet
+</a>
+
+</article>
+
+
+</div>
+
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat">
+
+<strong>
+1.2K+
+</strong>
+
+<span>
+Joueurs actifs
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<strong>
+350+
+</strong>
+
+<span>
+Matchs créés
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<strong>
+25+
+</strong>
+
+<span>
+Terrains
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<strong>
+4
+</strong>
+
+<span>
+Sports disponibles
+</span>
+
+</div>
+
+</div>
+
+
+
+<!-- CTA -->
+
+<section class="cta reveal">
+
+<h2>
+
+Ton prochain match
+<span class="gradient">
+commence ici.
+</span>
+
+</h2>
+
+<p>
+
+Crée ton match et invite
+ta communauté sportive.
+
+</p>
+
+<a
+href="contact.html"
+class="btn btn-primary"
+>
+➕ Créer un match
+</a>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+<div class="container">
+
+© 2026 MY SIIR —
+Play. Connect. Win.
+
+</div>
+
+</footer>
+
+
+
+<script>
+
+/* =========================
+STICKY HEADER
+========================= */
+
+const header =
+document.getElementById("header");
+
+window.addEventListener(
+"scroll",
+()=>{
+
+if(window.scrollY>40){
+
+header.classList.add("scrolled");
+
+}else{
+
+header.classList.remove("scrolled");
+
+}
+
+}
+);
+
+
+/* =========================
+FILTERS
+========================= */
+
+const search =
+document.getElementById("search");
+
+const sport =
+document.getElementById("sport");
+
+const level =
+document.getElementById("level");
+
+const city =
+document.getElementById("city");
+
+const cards =
+document.querySelectorAll(".match-card");
+
+const resultCount =
+document.getElementById("resultCount");
+
+
+function filterMatches(){
+
+let count=0;
+
+const query =
+search.value.toLowerCase();
+
+cards.forEach(card=>{
+
+const title =
+card.querySelector("h3")
+.textContent
+.toLowerCase();
+
+const cardSport =
+card.dataset.sport;
+
+const cardLevel =
+card.dataset.level;
+
+const cardCity =
+card.dataset.city;
+
+const matchSearch =
+title.includes(query);
+
+const matchSport =
+sport.value==="all"
+||
+cardSport===sport.value;
+
+const matchLevel =
+level.value==="all"
+||
+cardLevel===level.value;
+
+const matchCity =
+city.value==="all"
+||
+cardCity===city.value;
+
+
+if(
+matchSearch &&
+matchSport &&
+matchLevel &&
+matchCity
+){
+
+card.style.display="block";
+
+count++;
+
+}else{
+
+card.style.display="none";
+
+}
+
+});
+
+
+resultCount.textContent =
+count +
+(count>1
+?" matchs trouvés"
+:" match trouvé");
+
+}
+
+
+search.addEventListener(
+"input",
+filterMatches
+);
+
+sport.addEventListener(
+"change",
+filterMatches
+);
+
+level.addEventListener(
+"change",
+filterMatches
+);
+
+city.addEventListener(
+"change",
+filterMatches
+);
+
+
+/* =========================
+SCROLL REVEAL
+========================= */
+
+const elements =
+document.querySelectorAll(
+".reveal"
+);
+
+function reveal(){
+
+const height =
+window.innerHeight;
+
+elements.forEach(
+element=>{
+
+if(
+element.getBoundingClientRect().top
+<
+height-70
+){
+
+element.classList.add("show");
+
+}
+
+});
+
+}
+
+window.addEventListener(
+"scroll",
+reveal
+);
+
+window.addEventListener(
+"load",
+reveal
+);
+
+</script>
+
+
+</body>
+
+</html>
