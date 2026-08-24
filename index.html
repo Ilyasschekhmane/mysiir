@@ -2,271 +2,1803 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>mysiir – Social Sports App</title>
 
-  <!-- SEO -->
-  <meta name="description" content="mysiir est une application sportive sociale pour organiser, rejoindre et partager des matchs près de chez vous.">
-  <meta name="keywords" content="mysiir, sport, football, matchs, application sportive, social sports">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title>MY SIIR — Play. Connect. Win.</title>
+
+  <meta
+    name="description"
+    content="MY SIIR — La plateforme sportive pour trouver des matchs, rejoindre des équipes et réserver les meilleurs terrains près de vous."
+  >
+
+  <meta
+    name="keywords"
+    content="mysiir, sport, football, futsal, matchs, terrains, équipes, application sportive"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
+
     :root {
-      --primary: #22c55e;
-      --dark: #0f172a;
-      --light: #f8fafc;
-      --gray: #94a3b8;
+      --bg: #020914;
+      --bg-soft: #061426;
+      --card: rgba(10, 27, 47, 0.72);
+
+      --green: #00e5a0;
+      --green-dark: #00b982;
+
+      --purple: #7c3cff;
+      --purple-light: #9b6cff;
+
+      --white: #ffffff;
+      --text: #e8eef7;
+      --muted: #8fa0b5;
+
+      --border: rgba(255,255,255,0.10);
+
+      --shadow:
+        0 25px 80px rgba(0,0,0,0.45);
+
+      --radius: 24px;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background: var(--dark);
-      color: white;
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(
+          circle at 80% 10%,
+          rgba(124,60,255,0.16),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 10% 30%,
+          rgba(0,229,160,0.10),
+          transparent 28%
+        ),
+        var(--bg);
+
+      color: var(--white);
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,0.025) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.025) 1px,
+          transparent 1px
+        );
+
+      background-size: 60px 60px;
+
+      pointer-events: none;
+      z-index: -1;
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
-    /* HEADER */
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
     header {
       position: fixed;
       top: 0;
+      left: 0;
+
       width: 100%;
-      background: rgba(15,23,42,0.9);
-      backdrop-filter: blur(10px);
-      padding: 20px 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+
       z-index: 1000;
+
+      padding: 18px 0;
+
+      transition: 0.3s ease;
     }
 
-    header .logo {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--primary);
+    header.scrolled {
+      background: rgba(2,9,20,0.82);
+      backdrop-filter: blur(20px);
+
+      border-bottom: 1px solid var(--border);
+
+      padding: 12px 0;
     }
 
-    nav a {
-      margin-left: 25px;
-      font-weight: 500;
-      color: var(--gray);
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: white;
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      padding: 160px 60px 80px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 60px;
-    }
-
-    .hero h1 {
-      font-size: 52px;
-      line-height: 1.2;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      color: var(--gray);
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 28px;
-      background: var(--primary);
-      color: #022c22;
-      font-weight: 600;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(34,197,94,0.4);
-    }
-
-    .hero-image {
-      background: linear-gradient(145deg, #22c55e33, #0f172a);
-      border-radius: 20px;
-      height: 420px;
+    .nav {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      color: var(--gray);
+      justify-content: space-between;
     }
 
-    /* SECTIONS */
-    section {
-      padding: 100px 60px;
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -1px;
     }
 
-    .section-title {
-      text-align: center;
-      font-size: 36px;
-      margin-bottom: 60px;
+    .logo span:first-child {
+      color: var(--green);
     }
 
-    /* FEATURES */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    .logo span:last-child {
+      color: var(--purple-light);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
       gap: 30px;
     }
 
-    .card {
-      background: #020617;
-      padding: 30px;
-      border-radius: 16px;
+    nav a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+
+      transition: 0.25s;
+    }
+
+    nav a:hover {
+      color: var(--white);
+    }
+
+    .nav-button {
+      padding: 11px 20px;
+
+      border-radius: 12px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          #00c98e
+        );
+
+      color: #001b13;
+
+      font-weight: 800;
+
+      box-shadow:
+        0 10px 30px rgba(0,229,160,0.18);
+    }
+
+    .menu {
+      display: none;
+
+      width: 42px;
+      height: 42px;
+
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      background: rgba(255,255,255,0.04);
+
+      color: white;
+
+      font-size: 20px;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+
+      padding: 150px 0 90px;
+
+      display: grid;
+
+      grid-template-columns:
+        0.9fr
+        1.1fr;
+
+      align-items: center;
+
+      gap: 70px;
+
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+
+      position: absolute;
+
+      width: 500px;
+      height: 500px;
+
+      right: -250px;
+      top: 120px;
+
+      background: var(--purple);
+
+      filter: blur(180px);
+
+      opacity: 0.14;
+
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 8px 13px;
+
+      border-radius: 50px;
+
+      background: rgba(0,229,160,0.07);
+
+      border: 1px solid rgba(0,229,160,0.20);
+
+      color: var(--green);
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      margin-bottom: 24px;
+    }
+
+    .eyebrow::before {
+      content: "";
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      box-shadow:
+        0 0 15px var(--green);
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 6vw, 78px);
+
+      line-height: 0.98;
+
+      letter-spacing: -4px;
+
+      margin-bottom: 28px;
+    }
+
+    .gradient-text {
+      background:
+        linear-gradient(
+          100deg,
+          var(--green),
+          #52f2c0,
+          var(--purple-light)
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 570px;
+
+      color: var(--muted);
+
+      font-size: 17px;
+
+      line-height: 1.8;
+
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 10px;
+
+      padding: 15px 24px;
+
+      border-radius: 14px;
+
+      font-size: 14px;
+
+      font-weight: 800;
+
       transition: 0.3s;
-      border: 1px solid #1e293b;
     }
 
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: var(--primary);
+    .btn-primary {
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          #00bd8b
+        );
+
+      color: #001b13;
+
+      box-shadow:
+        0 15px 40px rgba(0,229,160,0.18);
     }
 
-    .card h3 {
-      margin-bottom: 15px;
-      color: var(--primary);
+    .btn-primary:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 20px 50px rgba(0,229,160,0.30);
     }
 
-    .card p {
-      color: var(--gray);
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+
+      border: 1px solid var(--border);
+
+      color: white;
     }
 
-    /* CTA */
-    .cta {
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #022c22;
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+
+      transform: translateY(-3px);
+    }
+
+
+    /* =========================
+       HERO IMAGE
+    ========================= */
+
+    .hero-visual {
+      position: relative;
+
+      display: flex;
+      justify-content: center;
+
+      min-height: 560px;
+    }
+
+    .glow {
+      position: absolute;
+
+      width: 330px;
+      height: 330px;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          var(--purple)
+        );
+
+      filter: blur(100px);
+
+      opacity: 0.20;
+
+      top: 100px;
+    }
+
+    .phone {
+      position: relative;
+
+      width: min(360px, 90%);
+
+      padding: 10px;
+
+      border-radius: 42px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.30),
+          rgba(255,255,255,0.05)
+        );
+
+      box-shadow:
+        0 40px 100px rgba(0,0,0,0.65),
+        0 0 80px rgba(0,229,160,0.10);
+    }
+
+    .phone::before {
+      content: "";
+
+      position: absolute;
+
+      width: 100px;
+      height: 24px;
+
+      left: 50%;
+      top: 18px;
+
+      transform: translateX(-50%);
+
+      background: #020914;
+
       border-radius: 30px;
-      text-align: center;
-      padding: 80px 40px;
+
+      z-index: 3;
     }
 
-    .cta h2 {
-      font-size: 40px;
+    .phone img {
+      width: 100%;
+
+      border-radius: 34px;
+
+      min-height: 520px;
+
+      object-fit: cover;
+
+      background: #061426;
+    }
+
+    .floating-card {
+      position: absolute;
+
+      right: -20px;
+      bottom: 80px;
+
+      padding: 15px 18px;
+
+      background:
+        rgba(7,20,35,0.88);
+
+      backdrop-filter: blur(20px);
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+
+      box-shadow: var(--shadow);
+
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .floating-card strong {
+      display: block;
+
+      font-size: 18px;
+
+      color: var(--green);
+    }
+
+    .floating-card span {
+      color: var(--muted);
+
+      font-size: 11px;
+    }
+
+    @keyframes float {
+
+      0%,100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+
+    }
+
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats {
+      padding: 20px 0 100px;
+    }
+
+    .stats-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      border: 1px solid var(--border);
+
+      border-radius: 22px;
+
+      background:
+        rgba(255,255,255,0.025);
+
+      overflow: hidden;
+    }
+
+    .stat {
+      padding: 30px;
+
+      text-align: center;
+
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat strong {
+      display: block;
+
+      font-size: 30px;
+
+      color: white;
+    }
+
+    .stat span {
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+
+    /* =========================
+       SECTION
+    ========================= */
+
+    section {
+      padding: 110px 0;
+    }
+
+    .section-head {
+      max-width: 650px;
+
+      margin-bottom: 55px;
+    }
+
+    .section-head.center {
+      margin-left: auto;
+      margin-right: auto;
+
+      text-align: center;
+    }
+
+    .section-label {
+      color: var(--green);
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(34px, 4vw, 52px);
+
+      line-height: 1.05;
+
+      letter-spacing: -2px;
+
+      margin-bottom: 18px;
+    }
+
+    .section-description {
+      color: var(--muted);
+
+      font-size: 16px;
+
+      line-height: 1.8;
+    }
+
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .features {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .feature {
+      padding: 30px;
+
+      min-height: 250px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(12,32,55,0.85),
+          rgba(5,16,29,0.85)
+        );
+
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius);
+
+      transition: 0.35s;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .feature::after {
+      content: "";
+
+      position: absolute;
+
+      width: 120px;
+      height: 120px;
+
+      right: -50px;
+      bottom: -50px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      filter: blur(60px);
+
+      opacity: 0.10;
+    }
+
+    .feature:hover {
+      transform: translateY(-8px);
+
+      border-color:
+        rgba(0,229,160,0.35);
+
+      box-shadow:
+        0 25px 60px rgba(0,0,0,0.30);
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 15px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(0,229,160,0.15),
+          rgba(124,60,255,0.15)
+        );
+
+      border: 1px solid var(--border);
+
+      font-size: 23px;
+
+      margin-bottom: 24px;
+    }
+
+    .feature h3 {
+      font-size: 19px;
+
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================
+       SCREENSHOTS
+    ========================= */
+
+    .screens {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 25px;
+    }
+
+    .screen {
+      padding: 10px;
+
+      border-radius: 28px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.14),
+          rgba(255,255,255,0.03)
+        );
+
+      border: 1px solid var(--border);
+
+      transition: 0.4s;
+    }
+
+    .screen:hover {
+      transform: translateY(-10px) scale(1.015);
+
+      box-shadow:
+        0 30px 70px rgba(0,0,0,0.4);
+    }
+
+    .screen img {
+      width: 100%;
+
+      height: 530px;
+
+      object-fit: cover;
+
+      border-radius: 21px;
+
+      background: #071728;
+    }
+
+
+    /* =========================
+       HOW IT WORKS
+    ========================= */
+
+    .steps {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 25px;
+    }
+
+    .step {
+      position: relative;
+
+      padding: 35px;
+
+      border-radius: 24px;
+
+      background:
+        rgba(255,255,255,0.025);
+
+      border: 1px solid var(--border);
+    }
+
+    .step-number {
+      font-size: 45px;
+
+      font-weight: 800;
+
+      color: rgba(255,255,255,0.08);
+
       margin-bottom: 20px;
     }
 
-    .cta p {
-      font-size: 18px;
-      margin-bottom: 30px;
+    .step h3 {
+      margin-bottom: 10px;
     }
 
-    /* FOOTER */
-    footer {
-      padding: 40px;
-      text-align: center;
-      color: var(--gray);
+    .step p {
+      color: var(--muted);
+
       font-size: 14px;
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 90px 40px;
+
+      border-radius: 35px;
+
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(0,229,160,0.25),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 80% 80%,
+          rgba(124,60,255,0.30),
+          transparent 35%
+        ),
+        #07182b;
+
+      border: 1px solid var(--border);
+    }
+
+    .cta h2 {
+      font-size: clamp(35px,5vw,60px);
+
+      letter-spacing: -2px;
+
+      margin-bottom: 18px;
+    }
+
+    .cta p {
+      color: var(--muted);
+
+      margin-bottom: 30px;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 70px 0 30px;
+
+      border-top: 1px solid var(--border);
+
+      margin-top: 80px;
+    }
+
+    .footer-grid {
+      display: grid;
+
+      grid-template-columns:
+        1.5fr
+        repeat(3,1fr);
+
+      gap: 40px;
+
+      margin-bottom: 60px;
+    }
+
+    .footer-brand p {
+      color: var(--muted);
+
+      max-width: 300px;
+
+      font-size: 14px;
+
+      margin-top: 15px;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 18px;
+
+      font-size: 14px;
+    }
+
+    .footer-col a {
+      display: block;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      margin-bottom: 10px;
+
+      transition: 0.25s;
+    }
+
+    .footer-col a:hover {
+      color: var(--green);
+    }
+
+    .copyright {
+      padding-top: 25px;
+
+      border-top: 1px solid var(--border);
+
+      color: #607188;
+
+      font-size: 12px;
+
+      text-align: center;
+    }
+
+
+    /* =========================
+       ANIMATION
+    ========================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform: translateY(35px);
+
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 950px) {
+
+      nav {
+        display: none;
       }
 
-      header {
-        padding: 20px;
+      .menu {
+        display: block;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        padding-top: 130px;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        min-height: 500px;
+      }
+
+      .features,
+      .screens,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+      .stat:nth-child(2) {
+        border-right: none;
+      }
+
+      .stat:nth-child(-n+2) {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+
+    @media (max-width: 600px) {
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-visual {
+        min-height: 450px;
+      }
+
+      .phone {
+        width: 290px;
+      }
+
+      .phone img {
+        min-height: 430px;
+      }
+
+      .floating-card {
+        right: 0;
       }
 
       section {
-        padding: 80px 20px;
+        padding: 75px 0;
       }
+
+      .stats {
+        padding-bottom: 50px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat {
+        padding: 20px 10px;
+      }
+
+      .stat strong {
+        font-size: 24px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        padding: 65px 25px;
+        border-radius: 25px;
+      }
+
     }
+
   </style>
 </head>
 
+
 <body>
 
-<header>
-  <div class="logo">mysiir</div>
-  <nav>
-  <a href="index.html">Accueil</a>
-  <a href="about.html">À propos</a>
-  <a href="matches.html">Matchs</a>
-  <a href="app.html">Application</a>
-  <a href="contact.html">Contact</a>
-</nav>
 
-</header>
+  <!-- =========================
+       HEADER
+  ========================= -->
 
-<section class="hero">
-  <div>
-    <h1>Organisez vos matchs.<br>Connectez votre communauté.</h1>
-    <p>
-      mysiir est une application sportive sociale qui permet
-      d’organiser, rejoindre et partager des matchs près de chez vous.
-    </p>
-    <a href="#" class="btn">Découvrir l’application</a>
-  </div>
+  <header id="header">
 
-  <div class="hero-image">
-    Aperçu de l’application
-  </div>
-</section>
+    <div class="container nav">
 
-<section>
-  <h2 class="section-title">Pourquoi mysiir ?</h2>
+      <a href="index.html" class="logo">
+        MY<span>SIIR</span>
+      </a>
 
-  <div class="features">
-    <div class="card">
-      <h3>⚽ Matchs locaux</h3>
-      <p>Trouvez et rejoignez des matchs sportifs autour de vous en temps réel.</p>
+      <nav>
+
+        <a href="index.html">Accueil</a>
+
+        <a href="about.html">À propos</a>
+
+        <a href="matches.html">Matchs</a>
+
+        <a href="app.html">Application</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a href="app.html" class="nav-button">
+          Découvrir
+        </a>
+
+      </nav>
+
+      <button class="menu">
+        ☰
+      </button>
+
     </div>
 
-    <div class="card">
-      <h3>📅 Organisation simple</h3>
-      <p>Créez un match en moins d’une minute et invitez vos amis.</p>
+  </header>
+
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <main>
+
+    <section class="hero">
+
+      <div class="container" style="display:contents;">
+
+        <div class="hero-content reveal">
+
+          <div class="eyebrow">
+            LA NOUVELLE EXPÉRIENCE SPORTIVE
+          </div>
+
+          <h1>
+
+            Play.
+            <br>
+
+            <span class="gradient-text">
+              Connect.
+            </span>
+
+            <br>
+
+            Win.
+
+          </h1>
+
+          <p>
+
+            Trouvez des joueurs, rejoignez des matchs,
+            découvrez les meilleurs terrains autour de vous
+            et construisez votre communauté sportive avec
+            <strong>MY SIIR</strong>.
+
+          </p>
+
+          <div class="hero-buttons">
+
+            <a href="app.html" class="btn btn-primary">
+              Découvrir l'application
+              →
+            </a>
+
+            <a href="#features" class="btn btn-secondary">
+              Explorer MY SIIR
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-visual reveal">
+
+          <div class="glow"></div>
+
+          <div class="phone">
+
+            <!--
+              IMPORTANT :
+              Mets ta nouvelle image dans :
+              images/screen2.png
+            -->
+
+            <img
+              src="images/screen2.png"
+              alt="Application MY SIIR"
+            >
+
+          </div>
+
+          <div class="floating-card">
+
+            <strong>+2.5K</strong>
+
+            <span>
+              joueurs actifs
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         STATS
+    ========================= -->
+
+    <div class="stats">
+
+      <div class="container">
+
+        <div class="stats-grid reveal">
+
+          <div class="stat">
+
+            <strong>2.5K+</strong>
+
+            <span>
+              Joueurs
+            </span>
+
+          </div>
+
+          <div class="stat">
+
+            <strong>500+</strong>
+
+            <span>
+              Matchs
+            </span>
+
+          </div>
+
+          <div class="stat">
+
+            <strong>120+</strong>
+
+            <span>
+              Terrains
+            </span>
+
+          </div>
+
+          <div class="stat">
+
+            <strong>4.9/5</strong>
+
+            <span>
+              Satisfaction
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
 
-    <div class="card">
-      <h3>👥 Communauté</h3>
-      <p>Rencontrez des joueurs passionnés et développez votre réseau sportif.</p>
+
+
+    <!-- =========================
+         FEATURES
+    ========================= -->
+
+    <section id="features">
+
+      <div class="container">
+
+        <div class="section-head center reveal">
+
+          <div class="section-label">
+            POURQUOI MY SIIR ?
+          </div>
+
+          <h2 class="section-title">
+            Tout ce dont vous avez besoin
+            <span class="gradient-text">
+              pour jouer.
+            </span>
+          </h2>
+
+          <p class="section-description">
+
+            Une expérience pensée pour les sportifs,
+            les équipes et tous ceux qui veulent jouer
+            plus souvent.
+
+          </p>
+
+        </div>
+
+
+        <div class="features">
+
+
+          <article class="feature reveal">
+
+            <div class="feature-icon">
+              ⚽
+            </div>
+
+            <h3>
+              Trouvez un match
+            </h3>
+
+            <p>
+              Découvrez les matchs disponibles près de
+              chez vous et rejoignez une équipe en quelques clics.
+            </p>
+
+          </article>
+
+
+          <article class="feature reveal">
+
+            <div class="feature-icon">
+              🏟️
+            </div>
+
+            <h3>
+              Réservez un terrain
+            </h3>
+
+            <p>
+              Trouvez les meilleurs terrains autour de vous,
+              comparez-les et préparez votre prochaine partie.
+            </p>
+
+          </article>
+
+
+          <article class="feature reveal">
+
+            <div class="feature-icon">
+              👥
+            </div>
+
+            <h3>
+              Rejoignez la communauté
+            </h3>
+
+            <p>
+              Rencontrez de nouveaux joueurs, créez votre équipe
+              et développez votre réseau sportif.
+            </p>
+
+          </article>
+
+
+          <article class="feature reveal">
+
+            <div class="feature-icon">
+              🏆
+            </div>
+
+            <h3>
+              Relevez des défis
+            </h3>
+
+            <p>
+              Défiez d'autres équipes et transformez chaque
+              rencontre en véritable compétition.
+            </p>
+
+          </article>
+
+
+          <article class="feature reveal">
+
+            <div class="feature-icon">
+              📍
+            </div>
+
+            <h3>
+              Proche de vous
+            </h3>
+
+            <p>
+              Une expérience basée sur votre localisation
+              pour trouver rapidement les meilleures opportunités.
+            </p>
+
+          </article>
+
+
+          <article class="feature reveal">
+
+            <div class="feature-icon">
+              ✨
+            </div>
+
+            <h3>
+              Une expérience moderne
+            </h3>
+
+            <p>
+              Une interface rapide, intuitive et pensée
+              d'abord pour les smartphones.
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SCREENSHOTS
+    ========================= -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="section-head center reveal">
+
+          <div class="section-label">
+            L'APPLICATION
+          </div>
+
+          <h2 class="section-title">
+            Une expérience
+            <span class="gradient-text">
+              conçue pour vous.
+            </span>
+          </h2>
+
+          <p class="section-description">
+
+            Découvrez quelques écrans de MY SIIR
+            et imaginez votre prochaine partie.
+
+          </p>
+
+        </div>
+
+
+        <div class="screens">
+
+
+          <div class="screen reveal">
+
+            <img
+              src="images/screen10.png"
+              alt="MY SIIR — Matchs"
+            >
+
+          </div>
+
+
+          <div class="screen reveal">
+
+            <img
+              src="images/screen20.png"
+              alt="MY SIIR — Challenge"
+            >
+
+          </div>
+
+
+          <div class="screen reveal">
+
+            <img
+              src="images/screen30.png"
+              alt="MY SIIR — Terrains"
+            >
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         HOW IT WORKS
+    ========================= -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <div class="section-label">
+            SIMPLE & RAPIDE
+          </div>
+
+          <h2 class="section-title">
+            Votre prochain match
+            <span class="gradient-text">
+              en 3 étapes.
+            </span>
+          </h2>
+
+        </div>
+
+
+        <div class="steps">
+
+
+          <article class="step reveal">
+
+            <div class="step-number">
+              01
+            </div>
+
+            <h3>
+              Découvrez
+            </h3>
+
+            <p>
+              Explorez les matchs, équipes et terrains
+              disponibles autour de vous.
+            </p>
+
+          </article>
+
+
+          <article class="step reveal">
+
+            <div class="step-number">
+              02
+            </div>
+
+            <h3>
+              Connectez-vous
+            </h3>
+
+            <p>
+              Rejoignez une équipe ou créez votre propre
+              match et invitez vos joueurs.
+            </p>
+
+          </article>
+
+
+          <article class="step reveal">
+
+            <div class="step-number">
+              03
+            </div>
+
+            <h3>
+              Jouez
+            </h3>
+
+            <p>
+              Rendez-vous sur le terrain et profitez
+              pleinement de votre passion.
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CTA
+    ========================= -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="cta reveal">
+
+          <div class="section-label">
+            PRÊT À JOUER ?
+          </div>
+
+          <h2>
+            Votre prochain match
+            <br>
+            commence ici.
+          </h2>
+
+          <p>
+            MY SIIR arrive bientôt sur Android et iOS.
+          </p>
+
+          <a href="app.html" class="btn btn-primary">
+            Découvrir MY SIIR
+            →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+
+        <div class="footer-brand">
+
+          <div class="logo">
+            MY<span>SIIR</span>
+          </div>
+
+          <p>
+            La nouvelle façon de trouver,
+            organiser et vivre le sport.
+          </p>
+
+        </div>
+
+
+        <div class="footer-col">
+
+          <h4>
+            Navigation
+          </h4>
+
+          <a href="index.html">
+            Accueil
+          </a>
+
+          <a href="about.html">
+            À propos
+          </a>
+
+          <a href="matches.html">
+            Matchs
+          </a>
+
+        </div>
+
+
+        <div class="footer-col">
+
+          <h4>
+            Application
+          </h4>
+
+          <a href="app.html">
+            Découvrir
+          </a>
+
+          <a href="contact.html">
+            Contact
+          </a>
+
+        </div>
+
+
+        <div class="footer-col">
+
+          <h4>
+            Informations
+          </h4>
+
+          <a href="privacy.html">
+            Confidentialité
+          </a>
+
+          <a href="contact.html">
+            Support
+          </a>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="copyright">
+
+        © 2026 MY SIIR — Play. Connect. Win.
+        Tous droits réservés.
+
+      </div>
+
     </div>
 
-    <div class="card">
-      <h3>📱 Mobile first</h3>
-      <p>Une expérience fluide pensée pour le mobile et les sportifs.</p>
-    </div>
-  </div>
-</section>
+  </footer>
 
-<section class="cta">
-  <h2>Téléchargez bientôt mysiir</h2>
-  <p>Disponible prochainement sur Android et iOS</p>
-  <a href="#" class="btn">📲 Android & iOS</a>
-</section>
 
-<footer>
-  © 2025 mysiir – Social Sports App. Tous droits réservés.
-</footer>
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    /* Sticky header */
+
+    const header =
+      document.getElementById("header");
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 40) {
+
+        header.classList.add("scrolled");
+
+      } else {
+
+        header.classList.remove("scrolled");
+
+      }
+
+    });
+
+
+
+    /* Scroll reveal */
+
+    const elements =
+      document.querySelectorAll(".reveal");
+
+    const reveal = () => {
+
+      const windowHeight =
+        window.innerHeight;
+
+      elements.forEach((element) => {
+
+        const top =
+          element.getBoundingClientRect().top;
+
+        if (top < windowHeight - 80) {
+
+          element.classList.add("show");
+
+        }
+
+      });
+
+    };
+
+    window.addEventListener("scroll", reveal);
+
+    window.addEventListener("load", reveal);
+
+  </script>
+
 
 </body>
 </html>
-
